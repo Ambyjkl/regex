@@ -444,6 +444,15 @@ impl RegexSet {
     pub fn patterns(&self) -> &[String] {
         &self.patterns
     }
+
+    /// Returns the memory usage, in bytes, of this `RegexSet`.
+    ///
+    /// This does **not** include the stack size used up by this `RegexSet`.
+    /// To compute that, use `std::mem::size_of::<RegexSet>()`.
+    #[inline]
+    pub fn memory_usage(&self) -> usize {
+        self.meta.memory_usage()
+    }
 }
 
 impl Default for RegexSet {
